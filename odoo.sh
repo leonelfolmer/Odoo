@@ -93,7 +93,7 @@ sudo su $OE_USER -c "mkdir $OE_HOME/custom"
 sudo su $OE_USER -c "mkdir $OE_HOME/custom/addons"
 
 
-echo -e "\n---- Install custom packages/requirements from OCA: connector-jira ----"
+echo -e "\n---- NOT MANDATORY: Install custom packages/requirements from OCA: connector-jira ----"
 sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector-jira/${OE_VERSION}/requirements.txt
 
 echo -e "\n---- Download custom modules from OCA ----"
