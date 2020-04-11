@@ -9,7 +9,7 @@ OE_VERSION="12.0"
 IS_ENTERPRISE="False"
 OE_SUPERADMIN="admin"
 OE_CONFIG="${OE_USER}-server"
-CUSTOM_ADDONS="$OE_HOME/custom/addons"
+CUSTOM_ADDONS="$OE_HOME/custom/addons/"
 
 
 WKHTMLTOX_X64=https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
@@ -92,12 +92,17 @@ echo -e "\n---- Create custom module directory ----"
 sudo su $OE_USER -c "mkdir $OE_HOME/custom"
 sudo su $OE_USER -c "mkdir $OE_HOME/custom/addons"
 
+# Custom #
 
-echo -e "\n---- NOT MANDATORY: Install custom packages/requirements from OCA: connector-jira ----"
+echo -e "\n---- Install custom packages/requirements from OCA ----"
 sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector-jira/${OE_VERSION}/requirements.txt
+sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector/${OE_VERSION}/requirements.txt
 
 echo -e "\n---- Download custom modules from OCA ----"
-sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector-jira /odoo/custom/addons/
+sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector-jira $CUSTOM_ADDONS
+sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector $CUSTOM_ADDONS
+
+# Custom #
 
 echo -e "\n---- Setting permissions on home folder ----"
 sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
