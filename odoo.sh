@@ -99,11 +99,6 @@ sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector-jira/${OE_V
 echo -e "\n---- Download custom modules from OCA ----"
 sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector-jira /odoo/custom/addons/
 
-sudo mv $CUSTOM_ADDONS/connector-jira/connector_jira $CUSTOM_ADDONS/
-sudo mv $CUSTOM_ADDONS/connector-jira/connector_jira_tempo $CUSTOM_ADDONS/
-sudo mv $CUSTOM_ADDONS/connector-jira/connector_jira_tempo_base $CUSTOM_ADDONS/
-sudo mv $CUSTOM_ADDONS/connector-jira/connector_jira_tempo_project_role $CUSTOM_ADDONS/
-
 echo -e "\n---- Setting permissions on home folder ----"
 sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
