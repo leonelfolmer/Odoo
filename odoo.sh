@@ -84,8 +84,9 @@ sudo chown $OE_USER:$OE_USER /var/log/$OE_USER
 #--------------------------------------------------
 # Install ODOO
 #--------------------------------------------------
-echo -e "\n==== Installing ODOO Server ===="
-sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/OCB $OE_HOME_EXT/
+echo -e "\n==== Installing Odoo Server ===="
+#sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/OCB $OE_HOME_EXT/
+sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_HOME_EXT/
 
 
 echo -e "\n---- Create custom module directory ----"
@@ -96,11 +97,9 @@ sudo su $OE_USER -c "mkdir $OE_HOME/custom/addons"
 
 echo -e "\n---- Install custom packages/requirements from OCA ----"
 sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector-jira/${OE_VERSION}/requirements.txt
-sudo pip3 install -r https://raw.githubusercontent.com/OCA/connector/${OE_VERSION}/requirements.txt
 
 echo -e "\n---- Download custom modules from OCA ----"
 sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector-jira $CUSTOM_ADDONS
-sudo git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/connector $CUSTOM_ADDONS
 
 # Custom #
 
